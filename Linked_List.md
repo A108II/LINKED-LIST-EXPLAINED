@@ -9,11 +9,11 @@
 ## Linked Lists Big O
 
 ### Adding and removing item from the end of a linked list
-- For `adding a new node `, last item will point to the newly added item, and the pointer of tail will be set to the pointer of the last item
+- For `adding a new node `, last item will point to the newly added item, and the pointer of tail will be set to the pointer of the last item (previous one).
 - There will be one execution or operation for this so the big O is `O(1)`
 - `Popping` or removing an item from the end of a linked list is different
 - In order to ensure `tail` point to the last item, we need to set the tail pointer to be equal to the pointer that is pointing to the last node
-- Since we can't go back in the linked list, In order to get that pointer, we need to start from `head` and iterate though the list
+- Since we can't go back in the linked list, In order to get that pointer, we need to start from `head` and iterate through the list
 - To get the pointer, and set tail equal to that pointer which points to the last item, we need to iterate through the list, so the big O is `O(n)`.
 
 ### Adding and removing item from the begining of a linked list
@@ -37,7 +37,7 @@
 - We need to start from the head and iterate through the list to reach the index 3
 - Here we need the 2nd index point to the item that the index 3 is points to
 - In a sense we set the pointer of the 2nd item to point to the same item the the index 3 pointer is pointing to
-- Once this is done, we remove the 3rd index
+- Once this is done, we remove the 3rd node
 - The big O here is `O(n)`, because we have to iterate through items
 
 ### Finding and item in a linked list
@@ -76,7 +76,7 @@
               }
             }
           }
-// Set the tail to the next value of the 57 node 
+// Set the tail to the next value of the node which has the value of 57 
 }
 ```
 
@@ -84,7 +84,7 @@
 - The constructor of a linked list along with `push`, `unshift`, `insert` methods get passed a value.
 - They also create a new node.
 - In order to prevent re-writing the same code for creating a new node, we create a `Node` class.
-- Whenever these methods want to create a new node they will call the `Node` class
+- Whenever these methods need to create a new node they will call the `Node` class
 
 ```javascript
 class Node {
@@ -147,7 +147,7 @@ linked_list.push(9);
 ### Pop
 - `Pop` the last item and move the tail to the left.
 - Find the node that points to the last node.
-  Set the `tail` equal to this node's next property which points to the last node.
+- Set the `tail` equal to this node's next property which points to the last node.
 - To access the node that points to the last node, iterate through the nodes starting from the `head`.
 - Set the `next` value of the last node to `null`.
 - `temp`: points to the last item.
@@ -196,6 +196,12 @@ class LinkedList {
     this.tail = pre;
     this.tail.next = null;
     length--;
+
+    if(this.length === 0) {
+      this.head = null;
+      this.head = null;
+    }
+    return temp;
   }
 }
 
@@ -253,6 +259,12 @@ class LinkedList {
     this.tail = pre;
     this.tail.next = null;
     length--;
+
+    if(this.length === 0) {
+      this.head = null;
+      this.head = null;
+    }
+    return temp;
   }
 
   unshift(value) {
@@ -338,7 +350,6 @@ class LinkedList {
 
   shift() {
     if (!this.head) return undefined;
-
     let temp = this.head;
     this.head = this.head.next;
     this.length--;
